@@ -1,0 +1,166 @@
+// Generated automatically by nearley, version 2.19.0
+// http://github.com/Hardmath123/nearley
+(function () {
+function id(x) { return x[0]; }
+var grammar = {
+    Lexer: undefined,
+    ParserRules: [
+    {"name": "prgm", "symbols": ["statement"]},
+    {"name": "prgm", "symbols": ["statement", "optionalWhiteSpace", {"literal":";"}, "optionalWhiteSpace", "statement", "optionalWhiteSpace"]},
+    {"name": "statement", "symbols": ["function"]},
+    {"name": "statement", "symbols": ["definition"]},
+    {"name": "definition$string$1", "symbols": [{"literal":":"}, {"literal":"="}], "postprocess": function joiner(d) {return d.join('');}},
+    {"name": "definition", "symbols": ["function", "definition$string$1", "function"]},
+    {"name": "function", "symbols": ["arg", {"literal":"("}, "args", {"literal":")"}]},
+    {"name": "args", "symbols": ["arg"]},
+    {"name": "args", "symbols": ["arg", "optionalWhiteSpace", {"literal":","}, "optionalWhiteSpace", "args"]},
+    {"name": "arg", "symbols": ["var"]},
+    {"name": "arg", "symbols": ["number"]},
+    {"name": "arg", "symbols": ["function"]},
+    {"name": "expr", "symbols": ["boolExpr"]},
+    {"name": "boolExpr", "symbols": ["notExpr", "optionalWhiteSpace"]},
+    {"name": "boolExpr$string$1", "symbols": [{"literal":"A"}, {"literal":"N"}, {"literal":"D"}], "postprocess": function joiner(d) {return d.join('');}},
+    {"name": "boolExpr", "symbols": ["boolExpr", "boolExpr$string$1", "boolExpr"]},
+    {"name": "boolExpr$string$2", "symbols": [{"literal":"O"}, {"literal":"R"}], "postprocess": function joiner(d) {return d.join('');}},
+    {"name": "boolExpr", "symbols": ["boolExpr", "boolExpr$string$2", "boolExpr"]},
+    {"name": "notExpr", "symbols": ["compare", "optionalWhiteSpace"]},
+    {"name": "notExpr$string$1", "symbols": [{"literal":"N"}, {"literal":"O"}, {"literal":"T"}], "postprocess": function joiner(d) {return d.join('');}},
+    {"name": "notExpr", "symbols": ["notExpr$string$1", "notExpr"]},
+    {"name": "compare", "symbols": ["sum", "optionalWhiteSpace"]},
+    {"name": "compare", "symbols": ["compare", {"literal":"="}, "compare"]},
+    {"name": "compare$string$1", "symbols": [{"literal":"!"}, {"literal":"="}], "postprocess": function joiner(d) {return d.join('');}},
+    {"name": "compare", "symbols": ["compare", "compare$string$1", "compare"]},
+    {"name": "compare", "symbols": ["compare", {"literal":"<"}, "compare"]},
+    {"name": "compare", "symbols": ["compare", {"literal":">"}, "compare"]},
+    {"name": "compare$string$2", "symbols": [{"literal":"<"}, {"literal":"="}], "postprocess": function joiner(d) {return d.join('');}},
+    {"name": "compare", "symbols": ["compare", "compare$string$2", "compare"]},
+    {"name": "compare$string$3", "symbols": [{"literal":">"}, {"literal":"="}], "postprocess": function joiner(d) {return d.join('');}},
+    {"name": "compare", "symbols": ["compare", "compare$string$3", "compare"]},
+    {"name": "sum", "symbols": ["factor"]},
+    {"name": "sum", "symbols": ["stringLiteral"]},
+    {"name": "sum", "symbols": ["sum", {"literal":"+"}, "sum"]},
+    {"name": "sum", "symbols": ["sum", {"literal":"-"}, "sum"]},
+    {"name": "factor", "symbols": ["power", "optionalWhiteSpace"]},
+    {"name": "factor", "symbols": ["factor", {"literal":"*"}, "factor"]},
+    {"name": "factor", "symbols": ["factor", {"literal":"/"}, "factor"]},
+    {"name": "power", "symbols": ["number", "optionalWhiteSpace"]},
+    {"name": "power", "symbols": ["power", {"literal":"^"}, "power"]},
+    {"name": "var", "symbols": ["string"]},
+    {"name": "var", "symbols": ["string", "number"]},
+    {"name": "var", "symbols": ["string", "symbol"]},
+    {"name": "var", "symbols": ["string", "var"]},
+    {"name": "stringLiteral", "symbols": [{"literal":"'"}, "string", {"literal":"'"}]},
+    {"name": "optionalWhiteSpace", "symbols": []},
+    {"name": "optionalWhiteSpace", "symbols": ["whiteSpace", "optionalWhiteSpace"]},
+    {"name": "whiteSpace", "symbols": [{"literal":" "}]},
+    {"name": "whiteSpace", "symbols": [{"literal":"\t"}]},
+    {"name": "whiteSpace", "symbols": [{"literal":"\n"}]},
+    {"name": "string", "symbols": ["ascii"]},
+    {"name": "string", "symbols": ["ascii", "string"], "postprocess": 
+        function(data) {
+            return data.join("");
+        }
+        },
+    {"name": "ascii", "symbols": ["symbol"]},
+    {"name": "ascii", "symbols": ["lowerCaseChar"]},
+    {"name": "ascii", "symbols": ["upperCaseChar"], "postprocess": 
+        function(data) {
+            return data.join("");
+        }
+        },
+    {"name": "symbol", "symbols": [{"literal":"!"}]},
+    {"name": "symbol", "symbols": [{"literal":"@"}]},
+    {"name": "symbol", "symbols": [{"literal":"#"}]},
+    {"name": "symbol", "symbols": [{"literal":"$"}]},
+    {"name": "symbol", "symbols": [{"literal":"%"}]},
+    {"name": "symbol", "symbols": [{"literal":"^"}]},
+    {"name": "symbol", "symbols": [{"literal":"&"}]},
+    {"name": "symbol", "symbols": [{"literal":"?"}]},
+    {"name": "symbol", "symbols": [{"literal":">"}]},
+    {"name": "symbol", "symbols": [{"literal":"<"}]},
+    {"name": "symbol", "symbols": [{"literal":"_"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"a"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"b"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"c"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"d"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"e"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"f"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"g"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"h"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"i"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"j"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"k"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"l"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"m"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"n"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"o"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"p"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"q"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"r"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"s"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"t"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"u"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"v"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"w"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"x"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"y"}]},
+    {"name": "lowerCaseChar", "symbols": [{"literal":"z"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"A"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"B"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"C"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"D"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"E"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"F"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"G"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"H"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"I"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"J"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"K"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"L"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"M"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"N"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"O"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"P"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"Q"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"R"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"S"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"T"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"U"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"V"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"W"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"X"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"Y"}]},
+    {"name": "upperCaseChar", "symbols": [{"literal":"Z"}]},
+    {"name": "number", "symbols": ["int"]},
+    {"name": "number", "symbols": ["int", {"literal":"."}, "int"]},
+    {"name": "number", "symbols": [{"literal":"."}, "int"]},
+    {"name": "number", "symbols": [{"literal":"-"}, "number"], "postprocess": 
+        function(data) {
+            return data.join("");
+        }
+        },
+    {"name": "int", "symbols": ["digit"]},
+    {"name": "int", "symbols": ["digit", "int"], "postprocess": 
+        function(data) {
+            return data.join("");
+        }
+        },
+    {"name": "digit", "symbols": [{"literal":"0"}]},
+    {"name": "digit", "symbols": [{"literal":"1"}]},
+    {"name": "digit", "symbols": [{"literal":"2"}]},
+    {"name": "digit", "symbols": [{"literal":"3"}]},
+    {"name": "digit", "symbols": [{"literal":"4"}]},
+    {"name": "digit", "symbols": [{"literal":"5"}]},
+    {"name": "digit", "symbols": [{"literal":"6"}]},
+    {"name": "digit", "symbols": [{"literal":"7"}]},
+    {"name": "digit", "symbols": [{"literal":"8"}]},
+    {"name": "digit", "symbols": [{"literal":"9"}]}
+]
+  , ParserStart: "prgm"
+}
+if (typeof module !== 'undefined'&& typeof module.exports !== 'undefined') {
+   module.exports = grammar;
+} else {
+   window.grammar = grammar;
+}
+})();
