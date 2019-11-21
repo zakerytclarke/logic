@@ -80,8 +80,8 @@ And(False,False)=True
 
 
 var test=["And",["Not","False"],"True"];
-test=[["And"],["True"],["Test"]];
-console.log(evaluate(test,proofs,expansions,2));
+test=[["And"],["True"],["x"]];
+console.log("***",evaluate(test,proofs,expansions,2));
 
 
 
@@ -106,6 +106,9 @@ function evaluate(expr,proofs,expansions,count){
     }
   }
 
+  //Substitute for variables
+
+
 
 
   if(out.length<count&&expr.constructor===Array){//More Possible Options
@@ -117,7 +120,7 @@ function evaluate(expr,proofs,expansions,count){
         newExpr[i]=results[j];
         var newResults=evaluate(newExpr,proofs,expansions,count);
         for(var k=0;k<newResults.length;k++){
-          out.push(newResults[k]);
+          out.push(newExpr);
         }
 
       }
